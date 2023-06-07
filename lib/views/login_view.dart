@@ -84,6 +84,9 @@ class _LoginViewState extends State<LoginView> {
                             'Error:${e.code}',
                           );
                         }
+                      }catch (e){
+                        await showErrorDialog(context,
+                        e.toString(),);
                       }
                     },
                     child:const Text('Login'),
