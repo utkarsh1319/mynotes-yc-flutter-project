@@ -4,7 +4,7 @@ class WrongPasswordAuthException implements Exception {}
 
 //register view exceptions
 class WeakPasswordAuthException implements Exception {}
-class EmaiAlreadyInUseAuthException implements Exception {}
+class EmailAlreadyInUseAuthException implements Exception {}
 class InvalidEmailAuthException implements Exception{}
 
 //generic exception
