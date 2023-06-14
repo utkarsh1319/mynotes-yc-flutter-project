@@ -94,7 +94,6 @@ class FirebaseAuthProvider implements AuthProvider{
       throw UserNotLoggedInAuthException();
     }
   }
-
   @override
   Future<void> sendEmailVerification() async{
     final user=FirebaseAuth.instance.currentUser;
