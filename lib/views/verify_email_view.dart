@@ -12,7 +12,9 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(title:const Text('Verify email'),),
+      appBar:AppBar(
+        title:const Text('Verify email'),
+        ),
       body: Column(
             children: [
             const Text("We've sent you an email address. Please open it to verify your account,"),

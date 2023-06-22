@@ -104,7 +104,6 @@ class FirebaseAuthProvider implements AuthProvider{
       throw UserNotLoggedInAuthException();
     }
   }
-  
   @override
   Future<void> initialize() async{
     await Firebase.initializeApp(
