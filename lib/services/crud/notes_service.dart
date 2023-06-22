@@ -7,7 +7,6 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' show join;
 
-
  class NotesService{
   Database?_db;
   List <DatabaseNote>_notes=[];
