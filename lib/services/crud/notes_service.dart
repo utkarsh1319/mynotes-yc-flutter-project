@@ -12,10 +12,16 @@ import 'package:path/path.dart' show join;
   List <DatabaseNote>_notes=[];
 //singleton created
   static final NotesService _shared =NotesService._sharedInstance();
-  NotesService._sharedInstance();
+  NotesService._sharedInstance(){
+    _notesStreamController=StreamController<List<DatabaseNote>>.broadcast(
+      onListen: (){
+        _notesStreamController.sink.add(_notes);
+      },
+    );
+  }
   factory NotesService()=>_shared;
-  final _notesStreamController=
-      StreamController<List<DatabaseNote>>.broadcast();
+  late final StreamController<List<DatabaseNote>> _notesStreamController;
+
   Stream<List<DatabaseNote>>get allNotes=>_notesStreamController.stream;
   Future<DatabaseUser>getOrCreateUser({
     required String email
@@ -90,6 +96,7 @@ import 'package:path/path.dart' show join;
     return numberOfDeletions;
   }
   Future<void>deleteNote({required int id})async{
+
     await _ensureDbIsOpen();
     final db=_getDatabaseOrThrow();
     final deletedCount=await db.delete(
@@ -284,7 +291,7 @@ const createUserTable='''CREATE TABLE IF NOT EXISTS"user"  (
 	    "email"	TEXT NOT NULL UNIQUE,
 	    PRIMARY KEY("id" AUTOINCREMENT)
       );'''; 
-const createNoteTable='''CREATE TABLE IF NOT TABLE"note" (
+const createNoteTable='''CREATE TABLE IF NOT EXISTS"note" (
       "id"	INTEGER NOT NULL,
       "user_id"	INTEGER NOT NULL,
       "text"	TEXT,
