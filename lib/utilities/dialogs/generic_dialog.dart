@@ -1,6 +1,5 @@
 //buttons inside ur gen dialog should ve same datatype
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 typedef DialogOptionBuilder<T>=Map<String,T?>Function();
 Future<T?>showGenericDialog<T>({
